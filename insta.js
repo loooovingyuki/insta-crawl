@@ -39,17 +39,11 @@ const CountTag = (arr) => {
       ele = ele.toLowerCase();
       ele in countHash?countHash[ele]++:countHash[ele] = 1;
   })
-  let arr3 = [];
-  for(let i in countHash ){
-    let arr2 = {};
-    arr2.hash = i;
-    arr2.cnt = countHash[i];
-    arr3.push(arr2);
-  }
-  arr3.sort(function(a,b){
+  let arr2 = Object.keys(countHash).map((e)=>({ key: e, cnt: countHash[e] }));
+  arr2.sort(function(a,b){
     if(a.cnt < b.cnt) return 1;
     if(a.cnt > b.cnt) return -1;
     return 0;
 });
-  return arr3;
+  return arr2;
 }
