@@ -23,7 +23,7 @@ const Tags = (html) => {
   let matches = [],match;
   while (match = regex.exec(html)){
     if(match[1].indexOf("\\")!==-1){
-      let a =　match[1].replace(/\\u/g, '0x').split("0x").map((x)=>{
+      let a =　match[1].split("\\u").map((x)=>{
         x = x?String.fromCharCode('0x'+x):x;
         return x;
       });
